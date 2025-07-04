@@ -41,15 +41,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // --- Nodemailer Transporter Setup ---
 // Configure your email transporter using SMTP.
-// IMPORTANT: Since 2-Step Verification is OFF, you MUST enable "Less secure app access"
-// in your Google Account settings and use your REGULAR GMAIL PASSWORD here.
-// This method is LESS SECURE. It is highly recommended to re-enable 2-Step Verification
-// and use an App Password for better security.
+// IMPORTANT: You are getting "535-5.7.8 Username and Password not accepted."
+// This means either:
+// 1. "Less secure app access" is NOT enabled for zalkianirudh@gmail.com.
+//    Go to https://myaccount.google.com/security and turn it ON.
+// 2. The password below is NOT your correct REGULAR GMAIL PASSWORD for zalkianirudh@gmail.com.
+//    Double-check it carefully.
+//
+// If you prefer better security, re-enable 2-Step Verification and use an App Password.
 const transporter = nodemailer.createTransport({
     service: 'gmail', // Or your email service provider (e.g., 'Outlook365', 'SendGrid')
     auth: {
         user: 'zalkianirudh@gmail.com', // Your Gmail address
-        pass: 'YOUR_ACTUAL_GMAIL_PASSWORD_HERE' // Replace with your actual Gmail password
+        pass: 'ffim epka qlcf eenk' // <--- REPLACE THIS WITH YOUR REAL GMAIL PASSWORD
     }
 });
 
@@ -120,4 +124,9 @@ app.get('/api/services', (req, res) => {
 // --- Server Start ---
 app.listen(port, () => {
     console.log(`ZynoxGenI Backend server listening at http://localhost:${port}`);
+    console.log('\nIMPORTANT: If emails are not sending, check the console for detailed error messages.');
+    console.log('The current error "535-5.7.8 Username and Password not accepted" strongly suggests:');
+    console.log('1. "Less secure app access" is NOT enabled for your Gmail account.');
+    console.log('2. The password in server.js is incorrect.');
+    console.log('Please verify these settings in your Google Account for zalkianirudh@gmail.com.');
 });
