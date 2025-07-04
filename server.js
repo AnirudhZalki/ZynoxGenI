@@ -10,9 +10,30 @@ const nodemailer = require('nodemailer'); // For sending emails
 const app = express();
 const port = process.env.PORT || 3000; // Define the port for the server to listen on
 
+// --- CORS Configuration ---
+// Define the specific origin(s) that are allowed to access your backend.
+// Replace 'https://anirudhzalki.github.io' with your actual GitHub Pages URL.
+const allowedOrigins = ['https://anirudhzalki.github.io'];
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        // or if the origin is in our allowed list.
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Specify allowed HTTP methods
+    credentials: true, // Allow cookies to be sent with requests (if needed)
+    optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 200
+};
+
+// Apply CORS middleware with the defined options
+app.use(cors(corsOptions));
+
 // Middleware setup
-// Enable CORS for all origins (for development purposes, restrict in production)
-app.use(cors());
 // Parse JSON bodies from incoming requests
 app.use(bodyParser.json());
 // Parse URL-encoded bodies (e.g., from traditional HTML forms)
@@ -20,13 +41,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // --- Nodemailer Transporter Setup ---
 // Configure your email transporter using SMTP.
-// IMPORTANT: For production, use environment variables for sensitive data like email and password.
-// Example for Gmail (you might need to enable "Less secure app access" or use App Passwords in your Google account settings):
+// IMPORTANT: Since 2-Step Verification is OFF, you MUST enable "Less secure app access"
+// in your Google Account settings and use your REGULAR GMAIL PASSWORD here.
+// This method is LESS SECURE. It is highly recommended to re-enable 2-Step Verification
+// and use an App Password for better security.
 const transporter = nodemailer.createTransport({
     service: 'gmail', // Or your email service provider (e.g., 'Outlook365', 'SendGrid')
     auth: {
-        user: 'zalkianirudh@gmail.com', // Updated with the provided sending email
-        pass: 'ffim epka qlcf eenk' // Updated with the provided App Password
+        user: 'zalkianirudh@gmail.com', // Your Gmail address
+        pass: 'YOUR_ACTUAL_GMAIL_PASSWORD_HERE' // Replace with your actual Gmail password
     }
 });
 
@@ -97,6 +120,4 @@ app.get('/api/services', (req, res) => {
 // --- Server Start ---
 app.listen(port, () => {
     console.log(`ZynoxGenI Backend server listening at http://localhost:${port}`);
-    console.log('\nIMPORTANT: If emails are not sending, check the console for detailed error messages.');
-    console.log('Common issues include incorrect App Password or 2-Step Verification not being fully set up.');
 });
