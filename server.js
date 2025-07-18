@@ -13,7 +13,13 @@ const port = process.env.PORT || 3000; // Define the port for the server to list
 // --- CORS Configuration ---
 // Define the specific origin(s) that are allowed to access your backend.
 // Replace 'https://anirudhzalki.github.io' with your actual GitHub Pages URL.
-const allowedOrigins = ['https://zynoxgeni.com/'];
+const allowedOrigins = [
+    'http://localhost:8000', // For local development (if your local dev server runs on 8000)
+    'http://localhost:5500', // Common for Live Server VS Code extension
+    'http://127.0.0.1:5500', // Another common local host
+    'https://anirudhzalki.github.io', // Your GitHub Pages domain
+    'https://zynoxgeni.com' // Your primary production domain
+];
 
 const corsOptions = {
     origin: function (origin, callback) {
