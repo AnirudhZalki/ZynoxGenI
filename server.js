@@ -67,7 +67,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //    Generate a new password for "Mail" / "Other". Copy the 16-character password exactly.
 // 2. Replace 'your_16_char_google_app_password' below with your actual generated App Password.
 const EMAIL_USER = 'zalkianirudh@gmail.com'; // Your Gmail address
-const EMAIL_PASS = 'umlt qnqf vrpn wdix'; // <--- REPLACE THIS WITH YOUR REAL GOOGLE APP PASSWORD
+const EMAIL_PASS = 'zjwg nsyq poln iecd'; // <--- REPLACE THIS WITH YOUR REAL GOOGLE APP PASSWORD
 
 const transporter = nodemailer.createTransport({
     service: 'gmail', // Using Gmail's SMTP service
