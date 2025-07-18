@@ -53,7 +53,7 @@ const transporter = nodemailer.createTransport({
     service: 'gmail', // Or your email service provider (e.g., 'Outlook365', 'SendGrid')
     auth: {
         user: 'zalkianirudh@gmail.com', // Your Gmail address
-        pass: 'ffim epka qlcf eenk' // <--- REPLACE THIS WITH YOUR REAL GMAIL PASSWORD
+        pass: 'umlt qnqf vrpn wdix' // <--- REPLACE THIS WITH YOUR REAL GMAIL PASSWORD
     }
 });
 
