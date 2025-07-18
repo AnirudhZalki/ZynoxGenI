@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000; // Define the port for the server to list
 // --- CORS Configuration ---
 // Define the specific origin(s) that are allowed to access your backend.
 // Replace 'https://anirudhzalki.github.io' with your actual GitHub Pages URL.
-const allowedOrigins = ['https://anirudhzalki.github.io'];
+const allowedOrigins = ['https://zynoxgeni.com/'];
 
 const corsOptions = {
     origin: function (origin, callback) {
