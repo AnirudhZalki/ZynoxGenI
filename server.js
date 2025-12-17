@@ -71,7 +71,9 @@ const EMAIL_USER = 'zalkianirudh@gmail.com'; // Your Gmail address
 const EMAIL_PASS = 'zjwg nsyq poln iecd'; // <--- REPLACE THIS WITH YOUR REAL GOOGLE APP PASSWORD
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // Using Gmail's SMTP service
+    host: 'smtp.gmail.com',
+    port: 587,              // 587 is often more reliable on cloud servers
+    secure: false, // Using Gmail's SMTP service
     auth: {
         user: EMAIL_USER,
         pass: EMAIL_PASS
