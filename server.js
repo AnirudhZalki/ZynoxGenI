@@ -20,7 +20,8 @@ const allowedOrigins = [
     'http://localhost:5500', // Common for VS Code's Live Server extension
     'http://127.0.0.1:5500', // Another common local host variation
     'https://anirudhzalki.github.io', // Your GitHub Pages domain
-    'https://zynoxgeni.com', // Your primary production domain
+    'https://zynoxgeni.com', 
+    'https://www.zynoxgeni.com'// Your primary production domain
     // Add any other specific domains your frontend might be hosted on
 ];
 
@@ -99,7 +100,7 @@ app.post('/api/contact', async (req, res) => {
     // Email content
     const mailOptions = {
         from: EMAIL_USER, // Sender address (must match the user in transporter.auth for Gmail)
-        to: 'zynoxgeni.official@gmail.com', // Recipient address for your business inquiries
+        to: 'info@zynoxgeni.com', // Recipient address for your business inquiries
         subject: `New Contact Form Submission from ${name}`, // Subject line for the email
         html: `
             <p>You have a new contact form submission:</p>
