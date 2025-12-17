@@ -72,8 +72,8 @@ const EMAIL_PASS = 'tvdp tijt pwpv hkle'; // <--- REPLACE THIS WITH YOUR REAL GO
 
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 587,              // 587 is often more reliable on cloud servers
-    secure: false, // Using Gmail's SMTP service
+    port: 465,        // <--- Change this to 465
+    secure: true,              // 587 is often more reliable on cloud servers // Using Gmail's SMTP service
     auth: {
         user: EMAIL_USER,
         pass: EMAIL_PASS
